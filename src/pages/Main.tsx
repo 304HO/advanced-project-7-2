@@ -1,5 +1,4 @@
 import React from "react";
-import ContentBackground from "../components/ContentBackground";
 import styled from "styled-components";
 import { Button } from "antd";
 import { ReactComponent as Icon } from "./../assets/images/checkList.svg";
@@ -64,18 +63,11 @@ function Main() {
   };
   return (
     <>
-      <ContentBackground>
-        <StyledArticle>
-          <div>
-            <StyledH1>설문조사를 생성 또는 작동할 수 있습니다.</StyledH1>
-            <StyledButtons>
-              <Button onClick={() => onClickNavigateHandler("/CreateSurveyDefault")}>생성하기</Button>
-              <Button onClick={() => onClickNavigateHandler("/SubmitSurvey")}>작성하기</Button>
-            </StyledButtons>
-          </div>
-          <Icon></Icon>
-        </StyledArticle>
-      </ContentBackground>
+      <StyledArticle>
+        <div>
+
+        </div>
+      </StyledArticle>
     </>
   );
 }
