@@ -10,7 +10,7 @@ import storage from "./common/utils/storage";
 
 import Error404 from "./pages/Error404";
 
-import Login from "./components/Login"
+import Main from "./pages/Main"
 
 function App() {
   const [theme, setTheme] = useState(storage.getTheme());
@@ -42,7 +42,8 @@ function App() {
   }, [])
 
   return (
-    <Login></Login>
+    <Main></Main>
+    // <Login></Login>
     // <ThemeProvider
     //   theme={{
     //     ...theme,
