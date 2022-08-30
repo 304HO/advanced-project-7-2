@@ -7,7 +7,6 @@ import { ThemeProvider } from "styled-components";
 import LightTheme from "./assets/theme/light";
 import DarkTheme from "./assets/theme/dark";
 import storage from "./common/utils/storage";
-import Header from "./components/Header";
 
 import Error404 from "./pages/Error404";
 
