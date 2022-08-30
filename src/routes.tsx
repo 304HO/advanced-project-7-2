@@ -1,5 +1,6 @@
 import Error404 from "./pages/Error404";
 import Main from "./pages/Main";
+import ReviewMain from "./pages/ReviewMain";
 import Test from "./pages/Test";
 import SearchMain from "./pages/SearchMain";
 
@@ -16,6 +17,12 @@ const routes: Array<RouteType> = [
     key: "Main",
     route: "/",
     component: <Main />
+  },
+  {
+    name: "ReviewMain",
+    key: "ReviewMain",
+    route: "/ReviewMain",
+    component: <ReviewMain />
   },
   {
     name: "Error404",

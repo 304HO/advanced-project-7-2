@@ -1,8 +1,14 @@
 import axiosApi from "../utils";
 
+type LoginType = {
+  providerType: string;
+  email: string;
+  password: string;
+};
+
 const authApi = {
-  logIn: (payload: any) => axiosApi.post("/auth/login/", payload).then((res) => res),
-  logOut: (payload: any) => axiosApi.post("/auth/logout/", payload).then((res) => res)
+  login: async (payload: LoginType) => await axiosApi.post("/auth/login/", payload),
+  getProfile: async () => await axiosApi.get("/user/")
 };
 
 export default authApi;
