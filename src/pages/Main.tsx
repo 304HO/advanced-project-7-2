@@ -4,7 +4,7 @@ import { Button } from "antd";
 import { ReactComponent as Icon } from "./../assets/images/checkList.svg";
 
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
+// import Header from "../components/Header";
 
 const StyledArticle = styled.article`
   position: relative;
