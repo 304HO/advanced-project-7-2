@@ -17,9 +17,23 @@ code {
   --color--primary--blue--bl1: #e6f7ff;
   --color--primary--blue--bl10: #002766;
   --color--primary--blue--bl6: #1890ff;
+
+  --color--primary--red--default: #ff5355;
+  --color--primary--black--default: #181818;
+  --color--primary--white--default: #ffffff;
+
+  --color--primary--gray--default: #f6f6fc;
+  --color--primary--gray--tag: #f6f4f6;
+  --color--primary--gray--line: #e7e2e8;
+  --color--primary--gray--icon: #cdcacf;
 }
 
 #root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  background-color: var(--color--primary--gray--default);
 }

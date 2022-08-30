@@ -3,14 +3,43 @@ import "../App.css";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBell, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { useAppSelector, useAppDispatch } from "./../hooks/storeHooks";
+import { getUserProfile } from "../features/userActions";
 
 function Header() {
-
+  const userState = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
+  React.useEffect(() => {
+    if (userState.accessToken !== null) {
+      dispatch(getUserProfile());
+    }
+  }, [userState.accessToken, dispatch]);
   return (
-    <div>
-
-    </div>
+    <StyledHeader>
+      <div>knewnew</div>
+      <div>
+        <FontAwesomeIcon icon={faMagnifyingGlass} />
+        <FontAwesomeIcon icon={faBell} />
+      </div>
+    </StyledHeader>
   );
 }
+
+const StyledHeader = styled.header`
+  position: sticky;
+  height: 64px;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  align-items: center;
+  transition-duration: 0.8s;
+  box-shadow: 0 1px 5px gray;
+  background: white;
+`;
 
 export default Header;
