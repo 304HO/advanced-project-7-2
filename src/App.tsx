@@ -7,7 +7,6 @@ import axios from "axios"
 import LightTheme from "./assets/theme/light";
 import DarkTheme from "./assets/theme/dark";
 import storage from "./common/utils/storage";
-// import Header from "./components/Header";
 
 import Error404 from "./pages/Error404";
 
@@ -16,18 +15,9 @@ import Main from "./pages/Main"
 function App() {
   const [theme, setTheme] = useState(storage.getTheme());
 
-
   const getRoutes = (allRoutes: Array<RouteType>) =>
     allRoutes.map((route: RouteType) => {
-      return (
-        route.route && (
-          <Route
-            path={route.route}
-            element={route.component}
-            key={route.key}
-          />
-        )
-      );
+      return route.route && <Route path={route.route} element={route.component} key={route.key} />;
     });
 
   const [data, setData] = useState(null);
