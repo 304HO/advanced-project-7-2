@@ -2,23 +2,36 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios"
 import authApi from "../apis/api/auth"
-
+import Google from "../assets/images/btn_google_signin_light_normal_web@2x.png"
 
 const Container = styled.div`
+  width:400px;
+  height:100vh;  
   display:flex;
   flex-direction:column;
   gap: 50px;
   background-color:rgb(246,246,252);
-  height:100vh;
+  
   justify-content:center;
   align-items:center;
+  margin-left:500px;
+
+  `
+
+const Input = styled.input`
+  width: 300px;
+  height: 50px;
   `
 const ButtonLogin = styled.button`
+  width: 300px;
+  height: 50px;
   background-color:rgb(255,83,85);
   color: white;
 `
 
 const ButtonGoogleLogin = styled.button`
+  width: 300px; 
+  height: 50px;
   background-color: white;
   font-weight:bold;
   color:rgb(117,117,117);
@@ -26,6 +39,10 @@ const ButtonGoogleLogin = styled.button`
   justify-content:center;
   align-items:center;
   gap:5px;
+`
+const Img = styled.img`
+width:310px;
+height:70px;
 `
 
 function Login() {
@@ -75,22 +92,22 @@ function Login() {
   return (
 
     <Container>
-      <input
+      <Input
         name="id"
-        placeholder="아이디"
+        placeholder="ID"
         onChange={onChange}
         value={id}
       />
-      <input
+      <Input
         name="password"
-        placeholder="비밀번호"
+        placeholder="PASSWORD"
         onChange={onChange}
         value={password}
       />
       <ButtonLogin onClick={onClickLogin}>로그인</ButtonLogin>
       {errorMessage === "" ? null : errorMessage}
 
-      <ButtonGoogleLogin onClick={onClickGoogle}><img src="../assets/images/google_cover.jpg" /><span>Sign in with Google</span></ButtonGoogleLogin>
+      <Img src={Google} onClick={onClickGoogle} />
 
     </Container>
 
