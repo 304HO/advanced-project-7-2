@@ -5,6 +5,8 @@ type HistoryType = {
   searchText: string;
 };
 
+//! Axios Cache Option 사용
+
 function SearchMain() {
   const [searchHistoryList, setSearchHistoryList] = React.useState<Array<HistoryType> | null>(null);
 
