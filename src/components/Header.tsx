@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import { Button } from "antd";
-import { defaultSurveyData } from "../common/constants";
 
 const StyledHeader = styled.header`
   position: fixed;
