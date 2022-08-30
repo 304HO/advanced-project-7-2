@@ -28,7 +28,7 @@ axiosApi.interceptors.response.use(
     return response;
   },
   function (error) {
-    window.location.href = "/404";
+    // window.location.href = "/404";
     console.log(error);
     return Promise.reject(error);
   }

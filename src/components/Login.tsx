@@ -8,19 +8,6 @@ import { AsyncThunkAction } from "@reduxjs/toolkit";
 import { useAppDispatch, useAppSelector } from "../hooks/storeHooks";
 import { OAUTH_URL } from "../common/constants";
 
-const Container = styled.div`
-  width: 400px;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  background-color: rgb(246, 246, 252);
-
-  justify-content: center;
-  align-items: center;
-  margin-left: 500px;
-`;
-
 const Input = styled.input`
   width: 300px;
   height: 50px;
@@ -77,14 +64,14 @@ function Login() {
   };
 
   return (
-    <Container>
+    <>
       <Input name="email" placeholder="EMAIL" onChange={onChange} value={email} />
       <Input name="password" placeholder="PASSWORD" onChange={onChange} value={password} />
       <ButtonLogin onClick={onClickhandler}>로그인</ButtonLogin>
       {errorMessage === "" ? null : errorMessage}
 
       <Img src={Google} onClick={onClickGoogle} />
-    </Container>
+    </>
   );
 }
 

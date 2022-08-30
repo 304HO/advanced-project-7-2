@@ -38,7 +38,7 @@ function Background({ children }: BackgroundType) {
             <Location>제휴문의: knewnew.official@gmail.com</Location>
           </LocationWrapper>
         </TitleWrapper>
-        {children}
+        <ContentContainer>{children}</ContentContainer>
       </Container>
     </>
   );
@@ -107,4 +107,19 @@ const Location = styled.div`
   font-size: 16px;
   line-height: 19px;
   color: #ffffff;
+`;
+
+const ContentContainer = styled.div`
+  width: 400px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  background-color: rgb(246, 246, 252);
+
+  justify-content: center;
+  align-items: center;
+  margin-left: 500px;
+
+  overflow-y: scroll;
 `;
