@@ -5,10 +5,6 @@ import Header from "../components/Header";
 import ReviewArticle from "../components/ReviewArticle";
 
 function ReviewMain() {
-  const navigate = useNavigate();
-
-
-  
   return (
     <>
       <Header></Header>

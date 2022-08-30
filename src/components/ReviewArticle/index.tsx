@@ -13,8 +13,10 @@ import Loading from "../Loading";
 import Satisfaction from "./Satisfaction";
 import { useInView } from "react-intersection-observer";
 import ArrowBottom from "./../../assets/images/double-arrow-bottom-icon.svg";
+import { useNavigate } from "react-router-dom";
 
 const ReviewArticle = () => {
+  const navigate = useNavigate();
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [reviews, setReviews] = useState<Array<ReviewType>>([]);
   const { ref, inView } = useInView({
@@ -33,12 +35,15 @@ const ReviewArticle = () => {
     setReviews((prev: any) => [...prev, ...data]);
     setIsLoaded(false);
   };
+  const onClickHandler = (id: number) => {
+    navigate(`/ReviewDetail/${id}`);
+  };
 
   return (
     <>
       {reviews.map((review, idx) => {
         return (
-          <StyledContent key={idx}>
+          <StyledContent key={idx} onClick={() => onClickHandler(review.id)}>
             <StyledTitle>
               <h1>{review?.author?.nickname}</h1>
               <FontAwesomeIcon icon={faEllipsis} />
