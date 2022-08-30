@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { createAsyncThunk, Dispatch } from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import authApi from "../apis/api/auth";
 
 export const userLogin = createAsyncThunk("auth/login/", async ({ email, password }: { email: string; password: string }, { rejectWithValue }) => {
