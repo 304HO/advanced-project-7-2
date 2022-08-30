@@ -1,10 +1,11 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
+import { selectAccessToken } from "../../features/userSlice";
 
-let store:any;
+let store: any;
 
-export const injectStore = (_store:any) => {
-  store = _store
-}
+export const injectStore = (_store: any) => {
+  store = _store;
+};
 
 const axiosApi = axios.create({
   baseURL: "https://dev.knewnnew.com",
@@ -12,14 +13,12 @@ const axiosApi = axios.create({
 });
 
 axiosApi.interceptors.request.use(
-  function (config:any) {
-    const result = store.getAuthToken();
-    console.log("interceptors",result)
-    config.headers.authorization = result;
+  function (config: any) {
+    const accessToken = selectAccessToken(store.getState());
+    if (accessToken !== null) config.headers.authorization = `Bearer ${accessToken}`;
     return config;
   },
   function (error) {
-    // Do something with request error
     return Promise.reject(error);
   }
 );
@@ -30,6 +29,7 @@ axiosApi.interceptors.response.use(
   },
   function (error) {
     window.location.href = "/404";
+    console.log(error);
     return Promise.reject(error);
   }
 );

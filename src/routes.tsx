@@ -1,6 +1,5 @@
 import Error404 from "./pages/Error404";
 import Main from "./pages/Main";
-import ReviewDetail from "./pages/ReviewDetail";
 import Test from "./pages/Test";
 
 export type RouteType = {
@@ -28,12 +27,6 @@ const routes: Array<RouteType> = [
     key: "Test",
     route: "/Test",
     component: <Test />
-  },
-  {
-    name: "ReviewDetail",
-    key: "ReviewDetail",
-    route: "/ReviewDetail/:id",
-    component: <ReviewDetail />
   }
 ];
 
