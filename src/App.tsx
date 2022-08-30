@@ -14,18 +14,9 @@ import Error404 from "./pages/Error404";
 function App() {
   const [theme, setTheme] = useState(storage.getTheme());
 
-
   const getRoutes = (allRoutes: Array<RouteType>) =>
     allRoutes.map((route: RouteType) => {
-      return (
-        route.route && (
-          <Route
-            path={route.route}
-            element={route.component}
-            key={route.key}
-          />
-        )
-      );
+      return route.route && <Route path={route.route} element={route.component} key={route.key} />;
     });
 
   return (

@@ -2,6 +2,7 @@ import Error404 from "./pages/Error404";
 import Main from "./pages/Main";
 import ReviewMain from "./pages/ReviewMain";
 import Test from "./pages/Test";
+import SearchMain from "./pages/SearchMain";
 
 export type RouteType = {
   name: string;
@@ -34,6 +35,12 @@ const routes: Array<RouteType> = [
     key: "Test",
     route: "/Test",
     component: <Test />
+  },
+  {
+    name: "SearchMain",
+    key: "SearchMain",
+    route: "/search",
+    component: <SearchMain />
   }
 ];
 
