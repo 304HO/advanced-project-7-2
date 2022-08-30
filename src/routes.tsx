@@ -1,5 +1,6 @@
 import Error404 from "./pages/Error404";
 import Main from "./pages/Main";
+import ReviewMain from "./pages/ReviewMain";
 import Test from "./pages/Test";
 
 export type RouteType = {
