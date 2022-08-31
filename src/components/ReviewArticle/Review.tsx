@@ -44,7 +44,7 @@ export default Review;
 
 const StyledContent = styled.div`
   border-radius: 15px;
-  margin: 20px;
+  margin: 30px 20px 30px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;

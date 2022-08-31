@@ -116,7 +116,7 @@ const Location = styled.div`
 `;
 
 const ContentContainer = styled.div`
-  width: 450px;
+  width: 420px;
   height: 100vh;
   display: flex;
   flex-direction: column;
