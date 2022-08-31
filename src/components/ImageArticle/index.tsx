@@ -3,7 +3,7 @@ import { faHeart, faCircle, faX, faQuestion, IconDefinition } from "@fortawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 import ImageComponent from "./ImageComponent";
-import { ImageType } from "../ReviewArticle";
+import { ImageType } from "../../hooks/useFetchMainReview";
 
 type PropsType = {
   images: Array<ImageType>;

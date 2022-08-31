@@ -1,65 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import commentsApi from "../apis/api/comments";
-import "swiper/swiper.min.css";
-import { Swiper, SwiperSlide } from "swiper/swiper-react";
 import { useNavigate, useParams } from "react-router-dom";
 import Loading from "./Loading";
-
-type CommnetType = {
-  id: number;
-  nickname: string;
-  content: string;
-  profileImage: string;
-};
-
-const data: any = {
-  id: 150,
-  author: {
-    id: 88,
-    tags: {
-      foodStyle: ["건강추구파"],
-      occupation: ["주부"],
-      household: ["2인가구"]
-    },
-    nickname: "test bot4",
-    profileImage: null,
-    badge: null
-  },
-  satisfaction: "best",
-  parent: null,
-  market: "SSG",
-  product: {
-    id: 12,
-    name: "블루베리 콩포트 그릭요거트130g"
-  },
-  content: "6 번째 요거트 푸드로그",
-  images: [
-    {
-      id: 160,
-      image: "https://knewnnew-dev-s3.s3.amazonaws.com/review/2022071807361865e729f118.jpeg",
-      priority: 0
-    },
-    {
-      id: 161,
-      image: "https://knewnnew-dev-s3.s3.amazonaws.com/review/2022071807361865e729f118.jpeg",
-      priority: 1
-    }
-  ],
-  tags: {
-    interest: ["다이어터", "오늘한끼", "빵식가", "홈카페", "디저트러버", "신상탐험대", "비건", "애주가", "캠퍼"]
-  },
-  bookmarkCount: 14,
-  childCount: 0,
-  commentCount: 0,
-  likeCount: 18,
-  shareCount: 0,
-  created: "2022-08-19T19:27:40.141801+09:00",
-  isBookmark: false,
-  isLike: false,
-  isActive: true,
-  isEdit: false
-};
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import reviewApi from "../apis/api/review";
 
 type ImageType = {
   id: number;
@@ -74,7 +23,8 @@ function ReviewImageComponent() {
   useEffect(() => {
     const getReviewData = async () => {
       if (id !== undefined) {
-        const res = await commentsApi.getAllComments({ id: parseInt(id) });
+        const res = await reviewApi.getReviewDetail({ id: parseInt(id) });
+        // console.log("reviewdata", res);
         setReviewData(res);
       }
     };
@@ -105,15 +55,24 @@ function ReviewImageComponent() {
 
   return (
     <>
-      {reviewData?.images?.map((el: ImageType) => {
-        return <Imagetest key={el?.id} src={el?.image} alt="ReviewImage" />;
-      })}
+      <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
+        {reviewData?.images?.map((el: ImageType) => {
+          return (
+            <SwiperSlide>
+              <ImageBox key={el?.id} src={el?.image} alt="ReviewImage" />
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
     </>
   );
 }
 
 export default ReviewImageComponent;
 
-const Imagetest = styled.img`
-  border: 3px solid red;
+const ImageBox = styled.img`
+  /* border: 3px solid red; */
+  background-color: rgb(245, 244, 251);
+  border-radius: 30px;
+  margin: 10px 50px;
 `;
