@@ -9,14 +9,16 @@ import LikeCount from "../Count/LikeCount";
 import ViewCount from "../Count/ViewCount";
 import ImageArticle from "../ImageArticle";
 import Satisfaction from "./Satisfaction";
+import SwiperComponent from "../SwiperComponent";
 
 type ContentPropsType = {
   review: ReviewType;
   useCounter?: boolean;
+  useSwiper?: boolean;
   children?: React.ReactElement;
 };
 
-function Content({ review, children, useCounter = false }: ContentPropsType) {
+function Content({ review, children, useCounter = false, useSwiper = false }: ContentPropsType) {
   return (
     <>
       <StyledTitle>
@@ -25,7 +27,8 @@ function Content({ review, children, useCounter = false }: ContentPropsType) {
       </StyledTitle>
       <Satisfaction satisfaction={review?.satisfaction} />
       <h2>{review?.content}</h2>
-      {review?.images && <ImageArticle images={review?.images}></ImageArticle>}
+      {useSwiper === false && review?.images && <ImageArticle images={review?.images}></ImageArticle>}
+      {useSwiper === true && <SwiperComponent review={review}></SwiperComponent>}
       {children && children}
       {useCounter && (
         <CounterArticle>

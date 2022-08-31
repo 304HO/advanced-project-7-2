@@ -1,9 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-// import Header from "../components/Header";
-import loading from "../components/Login";
-import Login from "../components/Login";
 import AppStore from "../assets/images/AppStore.png";
 import GooglePlay from "../assets/images/GooglePlay.png";
 
@@ -54,7 +50,6 @@ const Container = styled.div`
   display: flex;
   width: 100vw;
   height: 100vh;
-  
 `;
 
 const TitleWrapper = styled.div`
@@ -64,14 +59,13 @@ const TitleWrapper = styled.div`
   gap: 50px;
   margin-top: 150px;
   margin-left: 100px;
-  
 `;
 
 const TilteContainer = styled.div`
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
   gap: 5px;
-`
+`;
 const SubTitle = styled.div`
   font-family: "Inter";
   font-style: normal;
@@ -106,8 +100,8 @@ const Img = styled.div`
 `;
 
 const LocationWrapper = styled.div`
-display:flex;
-flex-direction:column;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 150px;
   gap: 10px;
 `;
