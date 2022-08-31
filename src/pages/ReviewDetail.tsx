@@ -2,15 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import Background from "../components/Background";
 import Swiper from "./../components/Swiper";
-
 import SimpleBarReact from "simplebar-react";
 import "simplebar/src/simplebar.css";
+import Comments from "../components/Comment";
 
 const ReviewDetail = () => {
   return (
     <Background>
       <StyledSimpleBarReact forceVisible="y" autoHide={false}>
         <Swiper></Swiper>
+        <Comments />
       </StyledSimpleBarReact>
     </Background>
   );
