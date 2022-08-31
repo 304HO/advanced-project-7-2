@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import reviewApi from "../apis/api/review";
+import Modal from "../components/Modal/Modal"
 
 type ImageType = {
   id: number;
@@ -17,6 +18,12 @@ type ImageType = {
 };
 
 function ReviewImageComponent() {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const modalhandler = () => {
+    setIsOpen((prev) => !prev);
+  };
+
   const [reviewData, setReviewData] = useState<any>(null);
   const { id } = useParams();
 
@@ -59,11 +66,22 @@ function ReviewImageComponent() {
         {reviewData?.images?.map((el: ImageType) => {
           return (
             <SwiperSlide>
-              <ImageBox key={el?.id} src={el?.image} alt="ReviewImage" />
+              <ImageBox key={el?.id} src={el?.image} alt="ReviewImage" onClick={modalhandler} />
             </SwiperSlide>
           );
         })}
       </Swiper>
+      <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+        <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
+          {reviewData?.images?.map((el: ImageType) => {
+            return (
+              <SwiperSlide>
+                <ImageBox key={el?.id} src={el?.image} alt="ReviewImage" onClick={modalhandler} />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </Modal>
     </>
   );
 }
@@ -76,3 +94,4 @@ const ImageBox = styled.img`
   border-radius: 30px;
   margin: 10px 50px;
 `;
+

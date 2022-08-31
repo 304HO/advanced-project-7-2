@@ -20,9 +20,11 @@ const Overlay = styled.div`
 
 const Modala = styled.div`
   position: fixed;
-  top: 25%;
-  left: 35%;
+  top: 35%;
+  left: 45%;
   z-index: 1000;
+  width:200px;
+  height:200px;
 `;
 
 export default function Modal({ open, children, onClose }: ModalPropsType) {

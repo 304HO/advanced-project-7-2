@@ -50,21 +50,25 @@ export default Background;
 
 const Container = styled.div`
   background-color: black;
-
   display: flex;
   width: 100vw;
   height: 100vh;
+  justify-content:center;
   
 `;
 
 const TitleWrapper = styled.div`
+ 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 50px;
   margin-top: 150px;
-  margin-left: 100px;
-  
+
+  margin-right: 500px;
+  @media(max-width: 1200px){
+    display:none;
+  }
 `;
 
 const TilteContainer = styled.div`
@@ -122,6 +126,7 @@ const Location = styled.div`
 `;
 
 const ContentContainer = styled.div`
+min-width:450px;
   width: 450px;
   height: 100vh;
   display: flex;
@@ -131,7 +136,7 @@ const ContentContainer = styled.div`
 
   justify-content: center;
   align-items: center;
-  margin-left: 500px;
+  
 
   // 추가
   position: relative;
