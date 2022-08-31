@@ -1,5 +1,6 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios, { AxiosAdapter } from "axios";
 import { selectAccessToken } from "../../features/userSlice";
+import { cacheAdapterEnhancer } from "axios-extensions";
 
 let store: any;
 
@@ -9,7 +10,8 @@ export const injectStore = (_store: any) => {
 
 const axiosApi = axios.create({
   baseURL: "https://dev.knewnnew.com",
-  withCredentials: true
+  withCredentials: true,
+  adapter: cacheAdapterEnhancer(axios.defaults.adapter as AxiosAdapter)
 });
 
 axiosApi.interceptors.request.use(

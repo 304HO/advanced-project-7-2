@@ -10,12 +10,10 @@ type CommentPropsType = {
 };
 
 function Comments({ comments, children, deep = 0 }: CommentPropsType) {
-  console.log("comments??", comments);
   return (
     <>
       {comments.length !== 0 &&
         comments.map((comment: any) => {
-          console.log(comment.child);
           return (
             <>
               {deep !== 0 && (

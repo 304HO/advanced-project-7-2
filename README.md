@@ -12,8 +12,9 @@
 <details>
     <summary>Figma Image</summary>
 
-
+![](file:///%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%ED%8E%98%EC%9D%B4%EC%A7%80.png)
 </details>
+
 # page
 
 1. 로그인 페이지 - 채희찬

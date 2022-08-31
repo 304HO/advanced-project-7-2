@@ -6,20 +6,6 @@ import styled from "styled-components";
 function MypageComponent() {
   const { userInfo } = useAppSelector((state) => state.user);
 
-  // useEffect(() => {
-  //   const getUserinfo = async () => {
-  //     const res = await authApi.getProfile();
-  //     // console.log(res.data);
-
-  //     setUserinfo(res.data)
-  //   }
-  //   getUserinfo();
-  // }, []);
-
-  // useEffect(() => {
-  //   console.log(userState)
-  // }, [userState.userInfo])
-
   if (userInfo === null) {
     return <div></div>;
   }

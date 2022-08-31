@@ -12,15 +12,12 @@ function CommentsArticle() {
     const getCommnets = async () => {
       if (rid !== undefined) {
         const res = await commentsApi.getAllComments({ rid: Number(rid) });
-        console.log("comments", res);
         setComments(res);
       }
     };
     getCommnets();
-  }, []);
+  }, [rid]);
 
-  // if (comments.length === 0) return null;
-  console.log("comments?.child?.length", comments);
   return (
     <>
       <Text>작성된 댓글 {comments.length}개</Text>

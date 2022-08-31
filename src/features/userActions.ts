@@ -21,7 +21,6 @@ export const userLogin = createAsyncThunk("auth/login/", async ({ email, passwor
 export const getUserProfile = createAsyncThunk("user/", async (arg, { getState, rejectWithValue }: any) => {
   try {
     const { data } = await authApi.getProfile();
-    console.log(data);
     return data;
   } catch (error: any) {
     const { response, message, serverErrorMessage } = error;

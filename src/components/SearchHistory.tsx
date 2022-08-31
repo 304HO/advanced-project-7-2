@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 function SearchHistory({ searchHistoryList }: any, removeSearchHistory: any) {
-  console.log(searchHistoryList);
   if (searchHistoryList === null) {
     return null;
   }
