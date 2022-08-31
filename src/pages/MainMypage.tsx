@@ -15,7 +15,7 @@ function MainMypage() {
   return (
     <>
       <Background>
-        <Header></Header>
+        <Header useBackSpace={true}></Header>
         <StyledSimpleBarReact forceVisible="y" autoHide={false}>
           <StyleDiv>
             <Mypage />

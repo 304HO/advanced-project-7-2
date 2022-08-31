@@ -17,7 +17,7 @@ type ImageType = {
   priority: number;
 };
 
-function ReviewImageComponent() {
+function SwiperComponent() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const modalhandler = () => {
@@ -86,7 +86,7 @@ function ReviewImageComponent() {
   );
 }
 
-export default ReviewImageComponent;
+export default SwiperComponent;
 
 const ImageBox = styled.img`
   /* border: 3px solid red; */

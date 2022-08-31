@@ -9,6 +9,9 @@ import SearchReview from "../components/SearchReview";
 import SearchUser from "../components/SearchUser";
 import SearchTap from "../components/SearchTap";
 
+import SimpleBarReact from "simplebar-react";
+import "simplebar/src/simplebar.css";
+
 // type HistoryType = {
 //   searchHistory: string;
 // };
@@ -89,49 +92,56 @@ function Search() {
   return (
     <>
       <Background>
-        <Header />
-        {searchText === null ? (
-          // TODO: SearchContainer -> Header로 삽입
-          //! 뒤로가기 버튼에 setSearchIdx(0); 필요
-          <>
-            <SearchContainer>
-              <InputField onChange={(e) => onChangeHandler(e.target.value)} type="text" name="search" required autoComplete="off" />
-              <ButtonWrap onClick={() => onClickHandler()}>
-                <FontAwesomeIcon icon={faSearch} />
-              </ButtonWrap>
-            </SearchContainer>
+        <StyledSimpleBarReact forceVisible="y" autoHide={false}>
+          <Header useBackSpace={true} />
+          {searchText === null ? (
+            // TODO: SearchContainer -> Header로 삽입
+            //! 뒤로가기 버튼에 setSearchIdx(0); 필요
+            <>
+              <SearchContainer>
+                <InputField onChange={(e) => onChangeHandler(e.target.value)} type="text" name="search" required autoComplete="off" />
+                <ButtonWrap onClick={() => onClickHandler()}>
+                  <FontAwesomeIcon icon={faSearch} />
+                </ButtonWrap>
+              </SearchContainer>
 
-            {searchHistoryList === null ? null : (
-              <HistoryContainer>
-                {searchHistoryList.map((searchHistory: string, idx: number) => {
-                  return (
-                    <HistoryWrap key={idx}>
-                      <HistoryText onClick={() => updateSearchText(searchHistory)}>{searchHistory}</HistoryText>
-                      <RemoveButtonWrap onClick={() => removeSearchHistory(idx)}>
-                        <FontAwesomeIcon icon={faX} style={{ width: 8 }} />
-                      </RemoveButtonWrap>
-                    </HistoryWrap>
-                  );
-                })}
-              </HistoryContainer>
-            )}
-            {/* <SearchHistory searchHistoryList={searchHistoryList} removeSearchHistory={removeSearchHistory} /> */}
-          </>
-        ) : searchIdx === 1 ? (
-          <>
-            <SearchTap searchIdx={searchIdx} />
-            <SearchReview searchText={searchText} />
-          </>
-        ) : (
-          <>
-            <SearchTap searchIdx={searchIdx} />
-            <SearchUser searchText={searchText} />
-          </>
-        )}
+              {searchHistoryList === null ? null : (
+                <HistoryContainer>
+                  {searchHistoryList.map((searchHistory: string, idx: number) => {
+                    return (
+                      <HistoryWrap key={idx}>
+                        <HistoryText onClick={() => updateSearchText(searchHistory)}>{searchHistory}</HistoryText>
+                        <RemoveButtonWrap onClick={() => removeSearchHistory(idx)}>
+                          <FontAwesomeIcon icon={faX} style={{ width: 8 }} />
+                        </RemoveButtonWrap>
+                      </HistoryWrap>
+                    );
+                  })}
+                </HistoryContainer>
+              )}
+              {/* <SearchHistory searchHistoryList={searchHistoryList} removeSearchHistory={removeSearchHistory} /> */}
+            </>
+          ) : searchIdx === 1 ? (
+            <>
+              <SearchTap searchIdx={searchIdx} setSearchIdx={setSearchIdx} />
+              <SearchReview searchText={searchText} />
+            </>
+          ) : (
+            <>
+              <SearchTap searchIdx={searchIdx} setSearchIdx={setSearchIdx} />
+              <SearchUser searchText={searchText} />
+            </>
+          )}
+        </StyledSimpleBarReact>
       </Background>
     </>
   );
 }
+
+const StyledSimpleBarReact = styled(SimpleBarReact)`
+  overflow-x: hidden;
+  max-height: 100vh;
+`;
 
 const SearchContainer = styled.form`
   box-sizing: border-box;
