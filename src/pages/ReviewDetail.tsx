@@ -4,13 +4,13 @@ import Background from "../components/Background";
 import Swiper from "../components/SwiperComponent";
 import SimpleBarReact from "simplebar-react";
 import "simplebar/src/simplebar.css";
-import Comments from "../components/Comment";
 import Content from "../components/ReviewArticle/Content";
 import { ReviewType } from "../hooks/useFetchMainReview";
 import { useParams } from "react-router-dom";
 import reviewApi from "../apis/api/review";
 import Header from "../components/Header";
 import Review from "../components/ReviewArticle/Review";
+import CommentsArticle from "../components/CommentsArticle";
 
 const ReviewDetail = () => {
   const [review, setReview] = React.useState<ReviewType | null>(null);
@@ -30,21 +30,16 @@ const ReviewDetail = () => {
 
   return (
     <Background>
-      <Header></Header>
       <StyledSimpleBarReact forceVisible="y" autoHide={false}>
+        <Header></Header>
         {review !== null && <Review useSwiper={true} review={review}></Review>}
-        <Comments />
+        <CommentsArticle></CommentsArticle>
       </StyledSimpleBarReact>
     </Background>
   );
 };
 
 export default ReviewDetail;
-
-const StyledDiv = styled.div`
-  width: 200px;
-  height: 100px;
-`;
 
 const StyledSimpleBarReact = styled(SimpleBarReact)`
   overflow-x: hidden;

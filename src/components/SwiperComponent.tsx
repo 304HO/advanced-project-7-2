@@ -27,7 +27,7 @@ function SwiperComponent({ review }: ReviewImageComponent) {
       <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
         {review?.images?.map((el: ImageType) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={el?.id}>
               <ImageBox key={el?.id} src={el?.image} alt="ReviewImage" />
             </SwiperSlide>
           );
