@@ -16,7 +16,7 @@ function Background({ children }: BackgroundType) {
     <>
       <Container>
         <TitleWrapper>
-          <div>
+          <TilteContainer>
             <SubTitle>푸드추천</SubTitle>
             <Desc>믿을 수 있는</Desc>
             <Desc>장보기의 시작</Desc>
@@ -32,7 +32,7 @@ function Background({ children }: BackgroundType) {
                 <img src={GooglePlay} alt={"뉴뉴 구글 스토어"} />
               </a>
             </Img>
-          </div>
+          </TilteContainer>
           <LocationWrapper>
             <Location>주소: 서울특별시 관악구 낙성대로4가길 5 2층 1호</Location>
             <Location>제휴문의: knewnew.official@gmail.com</Location>
@@ -54,17 +54,24 @@ const Container = styled.div`
   display: flex;
   width: 100vw;
   height: 100vh;
+  
 `;
 
 const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 30px;
   justify-content: space-between;
   gap: 50px;
-  margin-top: 100px;
+  margin-top: 150px;
+  margin-left: 100px;
+  
 `;
 
+const TilteContainer = styled.div`
+  display:flex;
+  flex-direction:column;
+  gap: 5px;
+`
 const SubTitle = styled.div`
   font-family: "Inter";
   font-style: normal;
@@ -99,7 +106,10 @@ const Img = styled.div`
 `;
 
 const LocationWrapper = styled.div`
-  margin-bottom: 100px;
+display:flex;
+flex-direction:column;
+  margin-bottom: 150px;
+  gap: 10px;
 `;
 
 const Location = styled.div`
@@ -112,7 +122,7 @@ const Location = styled.div`
 `;
 
 const ContentContainer = styled.div`
-  width: 420px;
+  width: 450px;
   height: 100vh;
   display: flex;
   flex-direction: column;
