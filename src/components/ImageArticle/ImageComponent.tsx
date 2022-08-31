@@ -2,7 +2,7 @@ import React from "react";
 import { faHeart, faCircle, faX, faQuestion, IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
-import { ImageType } from "../ReviewArticle";
+import { ImageType } from "../../hooks/useFetchMainReview";
 
 type PropsType = {
   image: string;

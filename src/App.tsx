@@ -11,6 +11,7 @@ import storage from "./common/utils/storage";
 import Error404 from "./pages/Error404";
 
 import Login from "./components/Login";
+import Main from "./pages/Main";
 import Search from "./pages/Search";
 
 function App() {
@@ -46,24 +47,22 @@ function App() {
 
   return (
     <>
-      <Login />
-      <Search />
+      <ThemeProvider
+        theme={{
+          ...theme,
+          setTheme: () => {
+            storage.setTheme(theme.id);
+            setTheme((theme) => (theme.id === "light" ? DarkTheme : LightTheme));
+          }
+        }}>
+        <BrowserRouter>
+          <Routes>
+            {getRoutes(routes)}
+            <Route path="*" element={<Error404 />} />
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
     </>
-    // <ThemeProvider
-    //   theme={{
-    //     ...theme,
-    //     setTheme: () => {
-    //       storage.setTheme(theme.id);
-    //       setTheme((theme) => (theme.id === "light" ? DarkTheme : LightTheme));
-    //     }
-    //   }}>
-    //   <BrowserRouter>
-    //     <Routes>
-    //       {getRoutes(routes)}
-    //       <Route path="*" element={<Error404 />} />
-    //     </Routes>
-    //   </BrowserRouter>
-    // </ThemeProvider>
   );
 }
 

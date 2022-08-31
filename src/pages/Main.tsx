@@ -1,41 +1,38 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Button } from "antd";
-import { ReactComponent as Icon } from "./../assets/images/checkList.svg";
-
+// import Header from "../components/Header";
+import Login from "../components/Login";
+import Background from "../components/Background";
+import { useAppSelector } from "../hooks/storeHooks";
 import { useNavigate } from "react-router-dom";
-import { store } from "../app/store";
-import { useAppDispatch, useAppSelector } from "../hooks/storeHooks";
-
-const StyledArticle = styled.article`
-  position: relative;
-  padding: 15em;
-  display: flex;
-  height: 100%;
-  width: 100%;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-`;
 
 function Main() {
-  const navigate = useNavigate();
   const userState = useAppSelector((state) => state.user);
+  const navigate = useNavigate();
   useEffect(() => {
     if (userState.accessToken !== null) {
       navigate("/ReviewMain");
     }
-  }, []);
-  const onClickNavigateHandler = (path: string) => {
-    navigate(path);
-  };
+  }, [userState.accessToken]);
   return (
     <>
-      <StyledArticle>
-        <div></div>
-      </StyledArticle>
+      <Background>
+        <StyleDiv>
+          <Login />
+        </StyleDiv>
+      </Background>
     </>
   );
 }
-
 export default Main;
+
+const StyleDiv = styled.div`
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+  gap: 20px;
+  max-height: 100vh;
+`;

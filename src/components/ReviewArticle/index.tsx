@@ -1,8 +1,9 @@
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import styled, { keyframes } from "styled-components";
 import reviewApi from "../../apis/api/review";
+import { ReviewType } from "../../hooks/useFetchMainReview";
 import BookmarkCount from "../Count/BookmarkCount";
 import CommentCount from "../Count/CommentCount";
 import LikeCount from "../Count/LikeCount";
@@ -10,81 +11,39 @@ import ViewCount from "../Count/ViewCount";
 import ImageArticle from "../ImageArticle";
 import Loading from "../Loading";
 import Satisfaction from "./Satisfaction";
-
-export type ImageType = { id: number; image: string; priority: number };
-
-type ReviewType = {
-  id: number;
-  author: {
-    id: number;
-    tags: {
-      occupation: Array<string>;
-      household: Array<string>;
-      foodStyle: Array<string>;
-    };
-    nickname: string;
-    profileImage: null | any;
-    badge: null | any;
-  };
-  parent: null | any;
-  product: {
-    id: number;
-    name: string;
-  };
-  market: string;
-  content: string;
-  images: Array<ImageType>;
-  satisfaction: "best" | "good" | "bad" | "question";
-  tags: {
-    [key: string]: Array<string>;
-  };
-  bookmarkCount: number;
-  commentCount: number;
-  likeCount: number;
-  viewCount: number;
-  created: string;
-  isActive: boolean;
-  isBookmark: boolean;
-  isEdit: boolean;
-  isLike: boolean;
-};
+import { useInView } from "react-intersection-observer";
+import ArrowBottom from "./../../assets/images/double-arrow-bottom-icon.svg";
+import { useNavigate } from "react-router-dom";
 
 const ReviewArticle = () => {
-  const [reviewData, setReviewData] = useState<Array<ReviewType> | null>(null);
-  const [offset, setOffset] = useState<number>(0);
+  const navigate = useNavigate();
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const [reviews, setReviews] = useState<Array<ReviewType>>([]);
+  const { ref, inView } = useInView({
+    threshold: 0
+  });
+
   React.useEffect(() => {
-    const getReview = async () => {
-      const { data }: { data: Array<ReviewType> } = await reviewApi.getReview({ limit: 5, offset });
-      console.log(data);
-      setReviewData(data);
-    };
-    getReview();
-  }, []);
-
-  useEffect(() => {
-    if (reviewData !== null) {
-      setOffset(reviewData.length);
+    if (inView) {
+      getMoreReview();
     }
-  }, [reviewData]);
+  }, [inView]);
 
-  const onClickHandler = async () => {
-    const { data }: { data: Array<ReviewType> } = await reviewApi.getReview({ limit: 5, offset });
-    console.log(data);
-    setReviewData((prev: any) => [...prev, ...data]);
+  const getMoreReview = async () => {
+    setIsLoaded(true);
+    const { data }: { data: Array<ReviewType> } = await reviewApi.getReview({ limit: 5, offset: reviews.length });
+    setReviews((prev: any) => [...prev, ...data]);
+    setIsLoaded(false);
+  };
+  const onClickHandler = (id: number) => {
+    navigate(`/ReviewDetail/${id}`);
   };
 
-  if (reviewData === null) {
-    return (
-      <>
-        <Loading></Loading>
-      </>
-    );
-  }
   return (
     <>
-      {reviewData.map((review, idx) => {
+      {reviews.map((review, idx) => {
         return (
-          <StyledContent key={idx}>
+          <StyledContent key={idx} onClick={() => onClickHandler(review.id)}>
             <StyledTitle>
               <h1>{review?.author?.nickname}</h1>
               <FontAwesomeIcon icon={faEllipsis} />
@@ -101,7 +60,11 @@ const ReviewArticle = () => {
           </StyledContent>
         );
       })}
-      <button onClick={onClickHandler}>더보기</button>
+      <StyledDivHidden ref={ref}></StyledDivHidden>
+      {isLoaded && <Loading></Loading>}
+      <StyledArrowBottom>
+        <img src={ArrowBottom} alt="ArrowBottom"></img>
+      </StyledArrowBottom>
     </>
   );
 };
@@ -112,7 +75,7 @@ const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 380px;
+  width: 350px;
   padding: 15px;
   gap: 5px;
   & > span:first-child {
@@ -130,6 +93,27 @@ const StyledTitle = styled.span`
 const CounterArticle = styled.span`
   display: flex;
   justify-content: space-around;
+`;
+
+const StyledDivHidden = styled.div`
+  visibility: hidden;
+`;
+
+const moveDown = keyframes`
+  from{
+    transform: translateY(-20px);
+  }
+  to{
+    transform: translateY(0px);
+  }
+`;
+
+const StyledArrowBottom = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 10px;
+  animation: ${moveDown} 1s infinite linear;
 `;
 
 export default ReviewArticle;
