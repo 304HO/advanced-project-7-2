@@ -9,13 +9,19 @@ import SimpleBarReact from "simplebar-react";
 import "simplebar/src/simplebar.css";
 
 function ReviewMain() {
+  const obj = {
+    useLogout: true,
+    useLogo: true,
+    useMypage: true,
+    useSearch: true
+  };
   return (
     <>
       <Background>
         <StyledSimpleBarReact forceVisible="y" autoHide={false}>
           {/* <span>믿을 수 있는 푸드 추천 </span>
           <span>앱으로보기</span> */}
-          <Header></Header>
+          <Header {...obj}></Header>
           <ReviewArticle></ReviewArticle>
         </StyledSimpleBarReact>
       </Background>

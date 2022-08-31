@@ -1,9 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-// import Header from "../components/Header";
-import loading from "../components/Login";
-import Login from "../components/Login";
 import AppStore from "../assets/images/AppStore.png";
 import GooglePlay from "../assets/images/GooglePlay.png";
 
@@ -50,11 +46,10 @@ export default Background;
 
 const Container = styled.div`
   background-color: black;
-
   display: flex;
   width: 100vw;
   height: 100vh;
-  
+  justify-content: center;
 `;
 
 const TitleWrapper = styled.div`
@@ -63,15 +58,17 @@ const TitleWrapper = styled.div`
   justify-content: space-between;
   gap: 50px;
   margin-top: 150px;
-  margin-left: 100px;
-  
+  margin-right: 500px;
+  @media (max-width: 1400px) {
+    display: none;
+  }
 `;
 
 const TilteContainer = styled.div`
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
   gap: 5px;
-`
+`;
 const SubTitle = styled.div`
   font-family: "Inter";
   font-style: normal;
@@ -102,12 +99,13 @@ const Title = styled.div`
 const Img = styled.div`
   display: flex;
   margin-left: 20px;
+  margin-top: 20px;
   gap: 5px;
 `;
 
 const LocationWrapper = styled.div`
-display:flex;
-flex-direction:column;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 150px;
   gap: 10px;
 `;
@@ -122,7 +120,8 @@ const Location = styled.div`
 `;
 
 const ContentContainer = styled.div`
-  width: 450px;
+  min-width: 420px;
+  width: 420px;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -131,7 +130,6 @@ const ContentContainer = styled.div`
 
   justify-content: center;
   align-items: center;
-  margin-left: 500px;
 
   // 추가
   position: relative;
