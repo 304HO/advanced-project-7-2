@@ -41,7 +41,7 @@
 ## 프로젝트 실행 방법
 
 ```
-git clone https://github.com/304HO/codestates-fe-advanced-project-7-2.git
+git clone https://github.com/o9oja/codestates-fe-advanced-project-7-2.git
 cd codestates-fe-advanced-project-7-2
 npm install
 npm start
