@@ -3,14 +3,15 @@ import "./App.css";
 import routes, { RouteType } from "./routes";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import axios from "axios"
+import axios from "axios";
 import LightTheme from "./assets/theme/light";
 import DarkTheme from "./assets/theme/dark";
 import storage from "./common/utils/storage";
 
 import Error404 from "./pages/Error404";
 
-import Login from "./components/Login"
+import Login from "./components/Login";
+import Search from "./pages/Search";
 
 function App() {
   const [theme, setTheme] = useState(storage.getTheme());
@@ -26,23 +27,28 @@ function App() {
     const hash = url.hash;
     if (hash) {
       const accessToken = hash.split("=")[1].split("&")[0];
-      console.log(accessToken)
-      axios.get('https://www.googleapis.com/oauth2/v2/userinfo?access_token=' + accessToken, {
-        headers: {
-          authorization: `token ${accessToken}`,
-          accept: 'application/json'
-        }
-      })
-        .then(res => {
-          console.log("res", res)
+      console.log(accessToken);
+      axios
+        .get("https://www.googleapis.com/oauth2/v2/userinfo?access_token=" + accessToken, {
+          headers: {
+            authorization: `token ${accessToken}`,
+            accept: "application/json"
+          }
+        })
+        .then((res) => {
+          console.log("res", res);
           setData(res.data);
           // useNavigate("")
-        }).catch(e => console.log('oAuth token expired'));
+        })
+        .catch((e) => console.log("oAuth token expired"));
     }
-  }, [])
+  }, []);
 
   return (
-    <Login></Login>
+    <>
+      <Login />
+      <Search />
+    </>
     // <ThemeProvider
     //   theme={{
     //     ...theme,
