@@ -1,10 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 
-type ReviewType = {};
-
-function SearchHistory() {
-  return <div></div>;
+function SearchHistory({ searchHistoryList }: any, removeSearchHistory: any) {
+  console.log(searchHistoryList);
+  if (searchHistoryList === null) {
+    return null;
+  }
+  return (
+    <>
+      {searchHistoryList.map((searchHistory: string, idx: number) => {
+        return (
+          <div key={idx} onClick={() => removeSearchHistory(idx)}>
+            {searchHistory}
+          </div>
+        );
+      })}
+    </>
+  );
 }
 
 export default SearchHistory;
