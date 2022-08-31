@@ -5,8 +5,9 @@ import Login from "../components/Login";
 import Background from "../components/Background";
 import { useAppSelector } from "../hooks/storeHooks";
 import { useNavigate } from "react-router-dom";
-import Mypage from "../components/Mypage"
+import Mypage from "../components/Mypage";
 import Header from "../components/Header";
+import SimpleBarReact from "simplebar-react";
 
 function MainMypage() {
   const userState = useAppSelector((state) => state.user);
@@ -15,14 +16,21 @@ function MainMypage() {
     <>
       <Background>
         <Header></Header>
-        <StyleDiv>
-          <Mypage />
-        </StyleDiv>
+        <StyledSimpleBarReact forceVisible="y" autoHide={false}>
+          <StyleDiv>
+            <Mypage />
+          </StyleDiv>
+        </StyledSimpleBarReact>
       </Background>
     </>
   );
 }
 export default MainMypage;
+
+const StyledSimpleBarReact = styled(SimpleBarReact)`
+  overflow-x: hidden;
+  max-height: 100vh;
+`;
 
 const StyleDiv = styled.div`
   overflow-x: hidden;

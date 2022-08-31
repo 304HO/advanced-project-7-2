@@ -12,7 +12,6 @@ const ReviewDetail = () => {
       <StyledSimpleBarReact forceVisible="y" autoHide={false}>
         <Swiper></Swiper>
       </StyledSimpleBarReact>
-      ={" "}
     </Background>
   );
 };
