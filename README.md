@@ -8,15 +8,23 @@
 - 김민성
 - 장석찬
 - 제경모
-  <br/>
-  <br/>
+
+<br/>
 
 ## Figma
 
 <details>
     <summary>Figma Image</summary>
+    
+![로그인 페이지](https://user-images.githubusercontent.com/91649767/187705211-7178a927-8f99-43dc-a085-5c66d3883e57.png)
 
-    이미지 들어갈 예정
+![리뷰(메인) 페이지](https://user-images.githubusercontent.com/91649767/187705141-9a55b41f-5407-449a-a931-6c8d1a6231b9.png)
+
+![리뷰 클릭시](https://user-images.githubusercontent.com/91649767/187705255-a8e5da0d-7249-41e0-be21-a1e3d7eda8d6.png)
+
+![검색기능](https://user-images.githubusercontent.com/91649767/187705353-90adf830-6dd6-4683-a931-1d6aead413bf.png)
+
+![검색기능-1](https://user-images.githubusercontent.com/91649767/187705370-6063f918-48a4-4751-9d70-49a98dae40d8.png)
 
 </details>
 <br/>
