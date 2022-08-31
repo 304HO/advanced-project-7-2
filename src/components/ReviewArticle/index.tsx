@@ -14,6 +14,7 @@ import Satisfaction from "./Satisfaction";
 import { useInView } from "react-intersection-observer";
 import ArrowBottom from "./../../assets/images/double-arrow-bottom-icon.svg";
 import { useNavigate } from "react-router-dom";
+import Content from "./Content";
 
 const ReviewArticle = () => {
   const navigate = useNavigate();
@@ -43,20 +44,23 @@ const ReviewArticle = () => {
     <>
       {reviews.map((review, idx) => {
         return (
-          <StyledContent key={idx} onClick={() => onClickHandler(review.id)}>
-            <StyledTitle>
-              <h1>{review?.author?.nickname}</h1>
-              <FontAwesomeIcon icon={faEllipsis} />
-            </StyledTitle>
-            <Satisfaction satisfaction={review?.satisfaction} />
-            <h2>{review?.content}</h2>
-            {review?.images && <ImageArticle images={review?.images}></ImageArticle>}
-            <CounterArticle>
-              <ViewCount count={review?.viewCount} />
-              <CommentCount count={review?.commentCount} />
-              <LikeCount count={review?.likeCount} />
-              <BookmarkCount count={review?.bookmarkCount} />
-            </CounterArticle>
+          <StyledContent
+            key={idx}
+            onClick={(e) => {
+              e.stopPropagation();
+              onClickHandler(review.id);
+            }}>
+            <Content review={review} useCounter={true}>
+              {review.parent && (
+                <StyledParentContent
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onClickHandler(review.parent.id);
+                  }}>
+                  <Content review={review.parent}></Content>
+                </StyledParentContent>
+              )}
+            </Content>
           </StyledContent>
         );
       })}
@@ -68,6 +72,8 @@ const ReviewArticle = () => {
     </>
   );
 };
+
+export default ReviewArticle;
 
 const StyledContent = styled.div`
   border-radius: 15px;
@@ -83,16 +89,24 @@ const StyledContent = styled.div`
     padding-bottom: 0.5em;
   }
   background: var(--color--primary--white--default);
+  box-shadow: -5px -5px 9px rgba(255, 255, 255, 0.45), 5px 5px 9px rgba(94, 104, 121, 0.3);
 `;
 
-const StyledTitle = styled.span`
+const StyledParentContent = styled.div`
+  border-radius: 15px;
+  margin: 20px;
   display: flex;
-  justify-content: space-between;
-`;
-
-const CounterArticle = styled.span`
-  display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
+  width: 310px;
+  padding: 15px;
+  gap: 5px;
+  & > span:first-child {
+    font-size: 1.3em;
+    padding-bottom: 0.5em;
+  }
+  background: var(--color--primary--white--default);
+  box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45), inset 5px 5px 9px rgba(94, 104, 121, 0.3);
 `;
 
 const StyledDivHidden = styled.div`
@@ -115,5 +129,3 @@ const StyledArrowBottom = styled.div`
   height: 10px;
   animation: ${moveDown} 1s infinite linear;
 `;
-
-export default ReviewArticle;
