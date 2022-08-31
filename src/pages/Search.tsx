@@ -89,7 +89,7 @@ function Search() {
   return (
     <>
       <Background>
-        <Header />
+        <Header useBackSpace={true} />
         {searchText === null ? (
           // TODO: SearchContainer -> Header로 삽입
           //! 뒤로가기 버튼에 setSearchIdx(0); 필요

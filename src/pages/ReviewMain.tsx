@@ -15,7 +15,7 @@ function ReviewMain() {
         <StyledSimpleBarReact forceVisible="y" autoHide={false}>
           {/* <span>믿을 수 있는 푸드 추천 </span>
           <span>앱으로보기</span> */}
-          <Header></Header>
+          <Header useLogo={true}></Header>
           <ReviewArticle></ReviewArticle>
         </StyledSimpleBarReact>
       </Background>
