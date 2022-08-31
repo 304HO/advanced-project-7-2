@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faX } from "@fortawesome/free-solid-svg-icons";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 import Background from "../components/Background";
 import Header from "../components/Header";
-import SearchHistory from "../components/SearchHistory";
 import SearchReview from "../components/SearchReview";
 import SearchUser from "../components/SearchUser";
 import SearchTap from "../components/SearchTap";
@@ -39,10 +38,8 @@ function Search() {
         localStorage.removeItem("searchHistory");
         setSearchHistoryList(null);
       } else {
-        console.log("remove");
         let newHistoryList = [...searchHistoryList];
         newHistoryList.splice(idx, 1);
-        console.log("removedHistoryList", newHistoryList);
         localStorage.setItem("searchHistory", JSON.stringify(newHistoryList));
         setSearchHistoryList(newHistoryList);
       }
@@ -53,7 +50,6 @@ function Search() {
     const searchHistoryString = localStorage.getItem("searchHistory");
     if (searchHistoryString !== null) {
       const searchHistory = JSON.parse(searchHistoryString);
-      console.log("저장 not null ", searchHistory, text);
       localStorage.setItem("searchHistory", JSON.stringify([...searchHistory, text]));
     } else {
       localStorage.setItem("searchHistory", JSON.stringify([text]));
@@ -69,44 +65,27 @@ function Search() {
     }
   };
 
-  const onChangeHandler = (inputValue: string) => {
-    // setCurrentText((prev: any) => ({ ...prev, inputValue }));
-    setCurrentText(inputValue);
-  };
-
-  const onClickHandler = () => {
-    if (currentText !== null) {
-      updateSearchText(currentText);
-      addSearchHistory(currentText);
-    }
-  };
-
   React.useEffect(() => {
     getSearchHistory();
   }, [localStorage]);
-
-  React.useEffect(() => {
-    // console.log("searchIdx", searchIdx);
-  }, [searchIdx]);
 
   return (
     <>
       <Background>
         <StyledSimpleBarReact forceVisible="y" autoHide={false}>
-          <Header useBackSpace={true} useMypage={true}>
-            my page
-          </Header>
+          <Header
+            useBackSpace={true}
+            useSearchBar={true}
+            currentText={currentText}
+            setCurrentText={setCurrentText}
+            updateSearchText={updateSearchText}
+            addSearchHistory={addSearchHistory}
+            backSpacePath={"/"}
+          />
           {searchText === null ? (
             // TODO: SearchContainer -> Header로 삽입
             //! 뒤로가기 버튼에 setSearchIdx(0); 필요
             <>
-              <SearchContainer>
-                <InputField onChange={(e) => onChangeHandler(e.target.value)} type="text" name="search" required autoComplete="off" />
-                <ButtonWrap onClick={() => onClickHandler()}>
-                  <FontAwesomeIcon icon={faSearch} />
-                </ButtonWrap>
-              </SearchContainer>
-
               {searchHistoryList === null ? null : (
                 <HistoryContainer>
                   {searchHistoryList.map((searchHistory: string, idx: number) => {
@@ -174,7 +153,7 @@ const ButtonWrap = styled.div`
 
 const HistoryContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   margin: 20px;
   gap: 4px;
 `;
