@@ -43,5 +43,6 @@ const ImageBox = styled.img`
   /* border: 3px solid red; */
   background-color: rgb(245, 244, 251);
   border-radius: 30px;
-  margin: 10px 50px;
+  margin: 10px;
+  padding: 15px;
 `;

@@ -1,5 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTurnUp } from "@fortawesome/free-solid-svg-icons";
 
 type CommentPropsType = {
   comments: Array<any>;
@@ -16,6 +18,11 @@ function Comments({ comments, children, deep = 0 }: CommentPropsType) {
           console.log(comment.child);
           return (
             <>
+              {deep !== 0 && (
+                <CommentComment deep={deep + 1}>
+                  <FontAwesomeIcon icon={faTurnUp} />
+                </CommentComment>
+              )}
               <CommentContainer deep={deep} key={comment["id"]}>
                 <CommnetProfile src={comment["author"]["profileImage"]} alt="profileImg" />
                 <div>
@@ -37,12 +44,11 @@ function Comments({ comments, children, deep = 0 }: CommentPropsType) {
 
 export default Comments;
 
-const CommnetRootContainer = styled.div`
-  /* border: 1px solid red; */
-  width: 420px;
-  display: flex;
-  flex-direction: column;
-  /* gap: 10px; */
+const CommentComment = styled.div<{ deep: number }>`
+  & > svg {
+    transform-origin: left;
+    transform: ${(props) => `translate(${30 * props.deep - 35}px, 23px) rotate(90deg)`};
+  }
 `;
 
 const CommentHeader = styled.div`
@@ -55,8 +61,9 @@ const CommentHeader = styled.div`
 
 const CommnetProfile = styled.img`
   /* border: 1px solid blue; */
-  width: 21px;
-  height: 21px;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
 `;
 
 const CommentContainer = styled.div<{ deep: number }>`
