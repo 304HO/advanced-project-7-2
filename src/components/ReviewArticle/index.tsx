@@ -75,7 +75,7 @@ const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 380px;
+  width: 350px;
   padding: 15px;
   gap: 5px;
   & > span:first-child {

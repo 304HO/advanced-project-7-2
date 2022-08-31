@@ -17,9 +17,22 @@ function Main() {
   return (
     <>
       <Background>
-        <Login />
+        <StyleDiv>
+          <Login />
+        </StyleDiv>
       </Background>
     </>
   );
 }
 export default Main;
+
+const StyleDiv = styled.div`
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+  gap: 20px;
+  max-height: 100vh;
+`;
