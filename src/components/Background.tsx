@@ -49,29 +49,19 @@ const Container = styled.div`
   display: flex;
   width: 100vw;
   height: 100vh;
-<<<<<<< HEAD
-  justify-content:center;
-  
-=======
->>>>>>> e2f9b00ee54755e57dd134ad3c8722ed6ba9bfd9
+  justify-content: center;
 `;
 
 const TitleWrapper = styled.div`
- 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 50px;
   margin-top: 150px;
-<<<<<<< HEAD
-
   margin-right: 500px;
-  @media(max-width: 1200px){
-    display:none;
+  @media (max-width: 1400px) {
+    display: none;
   }
-=======
-  margin-left: 100px;
->>>>>>> e2f9b00ee54755e57dd134ad3c8722ed6ba9bfd9
 `;
 
 const TilteContainer = styled.div`
@@ -109,6 +99,7 @@ const Title = styled.div`
 const Img = styled.div`
   display: flex;
   margin-left: 20px;
+  margin-top: 20px;
   gap: 5px;
 `;
 
@@ -129,7 +120,7 @@ const Location = styled.div`
 `;
 
 const ContentContainer = styled.div`
-min-width:420px;
+  min-width: 420px;
   width: 420px;
   height: 100vh;
   display: flex;
@@ -139,7 +130,6 @@ min-width:420px;
 
   justify-content: center;
   align-items: center;
-  
 
   // 추가
   position: relative;

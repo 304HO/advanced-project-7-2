@@ -12,9 +12,13 @@ import { logout } from "../features/userSlice";
 type HeaderPropsType = {
   useBackSpace?: boolean;
   useLogo?: boolean;
+  useLogout?: boolean;
+  useSearch?: boolean;
+  useMypage?: boolean;
+  children?: React.ReactElement | string;
 };
 
-function Header({ useBackSpace = false, useLogo = false }) {
+function Header({ children, useBackSpace = false, useLogo = false, useLogout = false, useSearch = false, useMypage = false }: HeaderPropsType) {
   const userState = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -49,14 +53,20 @@ function Header({ useBackSpace = false, useLogo = false }) {
     <StyledHeader>
       {useLogo === true && <StyledLogo onClick={onClickLogoHandler} src={logo} alt={"knewnew"}></StyledLogo>}
       {useBackSpace === true && <StyledFontAwesomeIcon onClick={onClickBackSpaceHandler} icon={faAngleLeft} />}
+      {children && <StyledH1>{children}</StyledH1>}
       <StyledDiv>
-        <StyledFontAwesomeIcon onClick={onClickLogoutHandler} icon={faRightFromBracket} />
-        <StyledFontAwesomeIcon onClick={onClickSearchHandler} icon={faMagnifyingGlass} />
-        <StyledFontAwesomeIcon onClick={onClickMypageHandler} icon={faBell} />
+        {useLogout === true && <StyledFontAwesomeIcon onClick={onClickLogoutHandler} icon={faRightFromBracket} />}
+        {useSearch === true && <StyledFontAwesomeIcon onClick={onClickSearchHandler} icon={faMagnifyingGlass} />}
+        {useMypage === true && <StyledFontAwesomeIcon onClick={onClickMypageHandler} icon={faBell} />}
       </StyledDiv>
     </StyledHeader>
   );
 }
+
+const StyledH1 = styled.h1`
+  font-size: 1.3em;
+  font-weight: 700;
+`;
 
 const StyledHeader = styled.header`
   position: sticky;

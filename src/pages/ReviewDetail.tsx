@@ -15,23 +15,23 @@ import CommentsArticle from "../components/CommentsArticle";
 const ReviewDetail = () => {
   const [review, setReview] = React.useState<ReviewType | null>(null);
   const { id } = useParams();
-  console.log(id);
 
   React.useEffect(() => {
     const getReview = async () => {
       if (id !== undefined) {
         const res = await reviewApi.getReviewDetail({ id: parseInt(id) });
-        console.log("review", res);
         setReview(res);
       }
     };
     getReview();
-  }, []);
+  }, [id]);
 
   return (
     <Background>
       <StyledSimpleBarReact forceVisible="y" autoHide={false}>
-        <Header useBackSpace={true}></Header>
+        <Header useBackSpace={true} useMypage={true}>
+          게시글 상세
+        </Header>
         {review !== null && <Review useSwiper={true} review={review}></Review>}
         <CommentsArticle></CommentsArticle>
       </StyledSimpleBarReact>

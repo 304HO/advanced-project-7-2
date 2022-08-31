@@ -93,7 +93,9 @@ function Search() {
     <>
       <Background>
         <StyledSimpleBarReact forceVisible="y" autoHide={false}>
-          <Header useBackSpace={true} />
+          <Header useBackSpace={true} useMypage={true}>
+            my page
+          </Header>
           {searchText === null ? (
             // TODO: SearchContainer -> Header로 삽입
             //! 뒤로가기 버튼에 setSearchIdx(0); 필요

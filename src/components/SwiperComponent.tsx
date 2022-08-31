@@ -9,7 +9,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import reviewApi from "../apis/api/review";
-import Modal from "../components/Modal/Modal"
+import Modal from "../components/Modal/Modal";
+import { ReviewType } from "../hooks/useFetchMainReview";
 
 type ImageType = {
   id: number;
@@ -17,53 +18,21 @@ type ImageType = {
   priority: number;
 };
 
-function SwiperComponent() {
+type ReviewImageComponent = {
+  review: ReviewType;
+};
+
+function SwiperComponent({ review }: ReviewImageComponent) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const modalhandler = () => {
     setIsOpen((prev) => !prev);
   };
 
-  const [reviewData, setReviewData] = useState<any>(null);
-  const { id } = useParams();
-
-  useEffect(() => {
-    const getReviewData = async () => {
-      if (id !== undefined) {
-        const res = await reviewApi.getReviewDetail({ id: parseInt(id) });
-        // console.log("reviewdata", res);
-        setReviewData(res);
-      }
-    };
-    getReviewData();
-  }, []);
-
-  if (reviewData === null) {
-    return <Loading></Loading>;
-  }
-
-  // const getcomments = async () => {
-  //   try {
-  //     const res = await commentsApi.getAllComments();
-  //     // console.log(res);
-  //     setComments(data);
-  //     console.log(comments);
-  //   } catch (err) {
-  //     return console.log(err);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   setReviewImgae(data);
-  //   // console.log("ReviewImage", reviewImage);
-  // }, [reviewImage]);
-
-  //   if (reviewImgae.length === 0) return null;
-
   return (
     <>
       <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
-        {reviewData?.images?.map((el: ImageType) => {
+        {review?.images?.map((el: ImageType) => {
           return (
             <SwiperSlide>
               <ImageBox key={el?.id} src={el?.image} alt="ReviewImage" onClick={modalhandler} />
@@ -73,7 +42,7 @@ function SwiperComponent() {
       </Swiper>
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
         <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
-          {reviewData?.images?.map((el: ImageType) => {
+          {review?.images?.map((el: ImageType) => {
             return (
               <SwiperSlide>
                 <ImageBox key={el?.id} src={el?.image} alt="ReviewImage" onClick={modalhandler} />
@@ -94,4 +63,3 @@ const ImageBox = styled.img`
   border-radius: 30px;
   margin: 10px 50px;
 `;
-
