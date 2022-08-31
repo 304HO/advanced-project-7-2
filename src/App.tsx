@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import routes, { RouteType } from "./routes";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import axios from "axios";
 import LightTheme from "./assets/theme/light";
 import DarkTheme from "./assets/theme/dark";
 import storage from "./common/utils/storage";
-
-import Error404 from "./pages/Error404";
-
-import Login from "./components/Login";
-import Main from "./pages/Main";
-import Search from "./pages/Search";
+import Error404 from "./pages/Error404Page";
 
 function App() {
   const [theme, setTheme] = useState(storage.getTheme());

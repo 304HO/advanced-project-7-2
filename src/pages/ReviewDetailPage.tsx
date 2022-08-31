@@ -12,7 +12,7 @@ import Header from "../components/Header";
 import Review from "../components/ReviewArticle/Review";
 import CommentsArticle from "../components/CommentsArticle";
 
-const ReviewDetail = () => {
+const ReviewDetailPage = () => {
   const [review, setReview] = React.useState<ReviewType | null>(null);
   const { id } = useParams();
 
@@ -39,7 +39,7 @@ const ReviewDetail = () => {
   );
 };
 
-export default ReviewDetail;
+export default ReviewDetailPage;
 
 const StyledSimpleBarReact = styled(SimpleBarReact)`
   overflow-x: hidden;

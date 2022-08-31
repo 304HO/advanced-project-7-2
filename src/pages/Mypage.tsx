@@ -5,13 +5,11 @@ import Login from "../components/Login";
 import Background from "../components/Background";
 import { useAppSelector } from "../hooks/storeHooks";
 import { useNavigate } from "react-router-dom";
-import Mypage from "../components/Mypage";
+import MypageComponent from "../components/MypageComponent";
 import Header from "../components/Header";
 import SimpleBarReact from "simplebar-react";
 
-function MainMypage() {
-  const userState = useAppSelector((state) => state.user);
-
+function Mypage() {
   return (
     <>
       <Background>
@@ -20,14 +18,14 @@ function MainMypage() {
         </Header>
         <StyledSimpleBarReact forceVisible="y" autoHide={false}>
           <StyleDiv>
-            <Mypage />
+            <MypageComponent />
           </StyleDiv>
         </StyledSimpleBarReact>
       </Background>
     </>
   );
 }
-export default MainMypage;
+export default Mypage;
 
 const StyledSimpleBarReact = styled(SimpleBarReact)`
   overflow-x: hidden;

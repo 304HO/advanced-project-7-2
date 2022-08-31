@@ -8,7 +8,7 @@ import ReviewArticle from "../components/ReviewArticle";
 import SimpleBarReact from "simplebar-react";
 import "simplebar/src/simplebar.css";
 
-function ReviewMain() {
+function ReviewPage() {
   const obj = {
     useLogout: true,
     useLogo: true,
@@ -29,7 +29,7 @@ function ReviewMain() {
   );
 }
 
-export default ReviewMain;
+export default ReviewPage;
 
 const StyledSimpleBarReact = styled(SimpleBarReact)`
   overflow-x: hidden;

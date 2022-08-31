@@ -39,14 +39,14 @@ function Header({ children, useBackSpace = false, useLogo = false, useLogout = f
   };
 
   const onClickSearchHandler = () => {
-    navigate("/search");
+    navigate("/SearchPage");
   };
 
   const onClickBackSpaceHandler = () => {
     navigate(-1);
   };
   const onClickMypageHandler = () => {
-    navigate("/MainMypage");
+    navigate("/Mypage");
   };
 
   return (

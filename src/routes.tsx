@@ -1,10 +1,9 @@
-import Error404 from "./pages/Error404";
-import Main from "./pages/Main";
-import ReviewMain from "./pages/ReviewMain";
-import Test from "./pages/Test";
-import ReviewDetail from "./pages/ReviewDetail";
-import Search from "./pages/Search";
-import MainMypage from "./pages/MainMypage"
+import Error404 from "./pages/Error404Page";
+import LoginPage from "./pages/LoginPage";
+import ReviewPage from "./pages/ReviewPage";
+import ReviewDetailPage from "./pages/ReviewDetailPage";
+import SearchPage from "./pages/SearchPage";
+import Mypage from "./pages/Mypage";
 
 export type RouteType = {
   name: string;
@@ -15,16 +14,16 @@ export type RouteType = {
 
 const routes: Array<RouteType> = [
   {
-    name: "Main",
-    key: "Main",
+    name: "LoginPage",
+    key: "LoginPage",
     route: "/",
-    component: <Main />
+    component: <LoginPage />
   },
   {
-    name: "ReviewMain",
-    key: "ReviewMain",
-    route: "/ReviewMain",
-    component: <ReviewMain />
+    name: "ReviewPage",
+    key: "ReviewPage",
+    route: "/ReviewPage",
+    component: <ReviewPage />
   },
   {
     name: "Error404",
@@ -33,28 +32,22 @@ const routes: Array<RouteType> = [
     component: <Error404 />
   },
   {
-    name: "Test",
-    key: "Test",
-    route: "/Test",
-    component: <Test />
+    name: "SearchPage",
+    key: "SearchPage",
+    route: "/SearchPage",
+    component: <SearchPage />
   },
   {
-    name: "Search",
-    key: "Search",
-    route: "/search",
-    component: <Search />
+    name: "ReviewDetailPage",
+    key: "ReviewDetailPage",
+    route: "/ReviewDetailPage/:id",
+    component: <ReviewDetailPage />
   },
   {
-    name: "ReviewDetail",
-    key: "ReviewDetail",
-    route: "/ReviewDetail/:id",
-    component: <ReviewDetail />
-  },
-  {
-    name: "MainMypage",
-    key: "MainMypage",
-    route: "/MainMypage",
-    component: <MainMypage />
+    name: "Mypage",
+    key: "Mypage",
+    route: "/Mypage",
+    component: <Mypage />
   }
 ];
 

@@ -14,7 +14,7 @@ const Review = ({ review, useSwiper = false }: ReviewPropsType) => {
   const navigate = useNavigate();
 
   const onClickHandler = (id: number) => {
-    navigate(`/ReviewDetail/${id}`);
+    navigate(`/ReviewDetailPage/${id}`);
   };
 
   return (

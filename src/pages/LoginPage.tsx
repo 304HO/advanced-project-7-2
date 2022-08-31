@@ -6,12 +6,12 @@ import Background from "../components/Background";
 import { useAppSelector } from "../hooks/storeHooks";
 import { useNavigate } from "react-router-dom";
 
-function Main() {
+function LoginPage() {
   const userState = useAppSelector((state) => state.user);
   const navigate = useNavigate();
   useEffect(() => {
     if (userState.accessToken !== null) {
-      navigate("/ReviewMain");
+      navigate("/ReviewPage");
     }
   }, [userState.accessToken]);
   return (
@@ -24,7 +24,7 @@ function Main() {
     </>
   );
 }
-export default Main;
+export default LoginPage;
 
 const StyleDiv = styled.div`
   overflow-x: hidden;

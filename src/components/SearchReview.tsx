@@ -33,7 +33,7 @@ function SearchReview({ searchText }: any) {
   // const searchReviewList = mock;
 
   const onClickHandler = (id: number) => {
-    navigate(`/ReviewDetail/${id}`);
+    navigate(`/ReviewDetailPage/${id}`);
   };
 
   // if (searchReviewList === null) {
