@@ -12,6 +12,7 @@ import Error404 from "./pages/Error404";
 
 import Login from "./components/Login";
 import Main from "./pages/Main";
+import Search from "./pages/Search";
 
 function App() {
   const [theme, setTheme] = useState(storage.getTheme());
