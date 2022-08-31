@@ -1,23 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import commentsApi from "../apis/api/comments";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { useNavigate, useParams } from "react-router-dom";
 import Loading from "./Loading";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import reviewApi from "../apis/api/review";
-
-import { Pagination } from "swiper";
-
-type CommnetType = {
-  id: number;
-  nickname: string;
-  content: string;
-  profileImage: string;
-};
 
 type ImageType = {
   id: number;
@@ -33,7 +24,7 @@ function ReviewImageComponent() {
     const getReviewData = async () => {
       if (id !== undefined) {
         const res = await reviewApi.getReviewDetail({ id: parseInt(id) });
-        console.log(res);
+        // console.log("reviewdata", res);
         setReviewData(res);
       }
     };
@@ -68,7 +59,7 @@ function ReviewImageComponent() {
         {reviewData?.images?.map((el: ImageType) => {
           return (
             <SwiperSlide>
-              <Imagetest key={el?.id} src={el?.image} alt="ReviewImage" />
+              <ImageBox key={el?.id} src={el?.image} alt="ReviewImage" />
             </SwiperSlide>
           );
         })}
@@ -79,6 +70,9 @@ function ReviewImageComponent() {
 
 export default ReviewImageComponent;
 
-const Imagetest = styled.img`
-  border: 3px solid red;
+const ImageBox = styled.img`
+  /* border: 3px solid red; */
+  background-color: rgb(245, 244, 251);
+  border-radius: 30px;
+  margin: 10px 50px;
 `;
