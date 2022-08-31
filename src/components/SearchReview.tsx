@@ -2,7 +2,7 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import searchApi from "../apis/api/search";
 import Content from "./ReviewArticle/Content";
-import { ReviewType } from "../hooks/useFetchMainReview";
+import { ReviewType } from "./../types/review";
 import { useNavigate } from "react-router-dom";
 import ArrowBottom from "./../assets/images/double-arrow-bottom-icon.svg";
 import Loading from "./Loading";

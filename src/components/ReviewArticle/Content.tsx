@@ -2,7 +2,7 @@ import React from "react";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
-import { ReviewType } from "../../hooks/useFetchMainReview";
+import { ReviewType } from "./../../types/review";
 import BookmarkCount from "../Count/BookmarkCount";
 import CommentCount from "../Count/CommentCount";
 import LikeCount from "../Count/LikeCount";

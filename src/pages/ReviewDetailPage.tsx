@@ -1,16 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import Background from "../components/Background";
-import Swiper from "../components/SwiperComponent";
 import SimpleBarReact from "simplebar-react";
 import "simplebar/src/simplebar.css";
-import Content from "../components/ReviewArticle/Content";
-import { ReviewType } from "../hooks/useFetchMainReview";
 import { useParams } from "react-router-dom";
 import reviewApi from "../apis/api/review";
 import Header from "../components/Header";
 import Review from "../components/ReviewArticle/Review";
 import CommentsArticle from "../components/CommentsArticle";
+import { ReviewType } from "../types/review";
 
 const ReviewDetailPage = () => {
   const [review, setReview] = React.useState<ReviewType | null>(null);

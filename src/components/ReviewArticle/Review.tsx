@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { ReviewType } from "../../hooks/useFetchMainReview";
+import { ReviewType } from "./../../types/review";
 import { useNavigate } from "react-router-dom";
 import Content from "./Content";
 

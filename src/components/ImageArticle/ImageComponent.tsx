@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
-import { ImageType } from "../../hooks/useFetchMainReview";
+import { ImageType } from "./../../types/review";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 
 type PropsType = {

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ImageComponent from "./ImageComponent";
-import { ImageType } from "../../hooks/useFetchMainReview";
+import { ImageType } from "./../../types/review";
 
 type PropsType = {
   images: Array<ImageType>;

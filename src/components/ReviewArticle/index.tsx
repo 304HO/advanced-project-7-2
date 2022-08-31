@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import reviewApi from "../../apis/api/review";
-import { ReviewType } from "../../hooks/useFetchMainReview";
+import { ReviewType } from "./../../types/review";
 import Loading from "../Loading";
 import { useInView } from "react-intersection-observer";
 import ArrowBottom from "./../../assets/images/double-arrow-bottom-icon.svg";

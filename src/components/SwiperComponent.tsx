@@ -10,7 +10,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import reviewApi from "../apis/api/review";
 import Modal from "../components/Modal/Modal";
-import { ReviewType } from "../hooks/useFetchMainReview";
+import { ReviewType } from "./../types/review";
 
 type ImageType = {
   id: number;
