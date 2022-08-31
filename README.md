@@ -1,6 +1,6 @@
 # codestates-fe-advanced-project-7-2
 
-# [Deploy Site]()
+# [Deploy Site](https://codestates-fe-advanced-project-7-2.vercel.app/)
 
 ## 7조 팀원구성
 
@@ -8,8 +8,8 @@
 - 김민성
 - 장석찬
 - 제경모
-<br/>
-<br/>
+  <br/>
+  <br/>
 
 ## Figma
 
@@ -17,6 +17,7 @@
     <summary>Figma Image</summary>
 
     이미지 들어갈 예정
+
 </details>
 <br/>
 
@@ -30,6 +31,7 @@
 <br/>
 
 ## 프로젝트 실행 방법
+
 ```
 git clone https://github.com/304HO/codestates-fe-advanced-project-7-2.git
 cd codestates-fe-advanced-project-7-2
@@ -54,11 +56,13 @@ npm start
 - [x] 로컬 스토리지를 활용하셔도 좋습니다. (한번 로딩된 데이터 저장, 이미 탐색한 데이터를 다시 탐색할 경우 캐시된 데이터를 불러와 렌더링)
 
 - [x] 그 외 알아보기 쉬운 네이밍, 일관된 코드 포맷팅 규칙 등을 유지하도록 하며, 코드 중복은 지양합니다.
-<br/>
-<br/>
+      <br/>
+      <br/>
 
 ## 아쉬운 점
 
 - [ ] props type들을 한 폴더(types)에 몰아 넣어 정리해야 하는데 시간이 부족하여 아쉽습니다.
 
-- [ ] 
+- [ ] hooks를 조금 더 적극적으로 사용해보지 못해 아쉽습니다.
+
+- [ ] 검색에서 하이라이트 적용해보지 못해 아쉽습니다.
