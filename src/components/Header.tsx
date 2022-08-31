@@ -2,6 +2,7 @@ import React from "react";
 import "../App.css";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useAppSelector, useAppDispatch } from "./../hooks/storeHooks";
