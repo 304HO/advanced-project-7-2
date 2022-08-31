@@ -8,62 +8,63 @@ type ResultType = {
   profileImage: string;
 };
 
-type UserType = {
-  totalLength: number;
-  result: Array<ResultType>;
-};
+function SearchUser({ searchText }: any) {
+  const [searchUserList, setSearchUserList] = React.useState<Array<ResultType> | null>(null);
 
-const mock = {
-  totalLength: 2,
-  result: [
-    {
-      id: 48,
-      nickname: "구남규#5386",
-      profileImage: "https://knewnnew-dev-s3.s3.amazonaws.com/user/20220721122704dc3b3d1432.png"
-    },
-    {
-      id: 69,
-      nickname: "구남규#6179",
-      profileImage: "https://knewnnew-dev-s3.s3.amazonaws.com/user/202207280828317c6934a097.jpeg"
-    }
-  ]
-};
+  React.useEffect(() => {
+    const getSearchUserList = async () => {
+      try {
+        const res: any = await searchApi.searchUser(searchText);
+        if (res.result.length !== 0) {
+          setSearchUserList(res.result);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getSearchUserList();
+  }, [searchText]);
 
-function SearchUser(searchText: any) {
-  // const [searchUserList, setSearchUserList] = React.useState<Array<UserType> | null>(null);
-
-  // React.useEffect(() => {
-  //   const getSearchUserList = async () => {
-  //     try {
-  //       const res: any = await searchApi.searchUser(searchText);
-  //       setSearchUserList(res);
-  //       console.log(res);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   getSearchUserList();
-  // }, [searchText]);
-
-  const searchUserList = mock;
-
-  if (searchUserList === null) {
-    return <div>검색 결과가 없습니다.</div>;
-  }
   return (
-    <div>
-      <div>검색결과 : {searchUserList.totalLength}</div>
-      {searchUserList.result.map((id, nickname, profileImage) => {
-        console.log("searchUserListMap", id, nickname, profileImage);
-        return (
-          <>
-            {/* <img src={profileImage} alt="err"></img>
-            <div>{nickname}</div> */}
-          </>
-        );
-      })}
-    </div>
+    <ResultContainer>
+      <ResultCount>검색결과 {searchUserList === null ? 0 : searchUserList.length}건</ResultCount>
+      {searchUserList !== null &&
+        searchUserList.map(({ id, nickname, profileImage }) => {
+          return (
+            <UserContainer key={id}>
+              <UserImg src={profileImage} />
+              <UserNickname>{nickname}</UserNickname>
+            </UserContainer>
+          );
+        })}
+    </ResultContainer>
   );
 }
+
+const ResultContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+const UserContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  padding: 4px 22px;
+  gap: 8px;
+`;
+
+const ResultCount = styled.div`
+  padding: 20px;
+`;
+
+const UserImg = styled.img`
+  width: 32px;
+  border-radius: 50px;
+`;
+
+const UserNickname = styled.div``;
 
 export default SearchUser;

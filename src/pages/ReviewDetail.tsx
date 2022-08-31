@@ -31,7 +31,7 @@ const ReviewDetail = () => {
   return (
     <Background>
       <StyledSimpleBarReact forceVisible="y" autoHide={false}>
-        <Header></Header>
+        <Header useBackSpace={true}></Header>
         {review !== null && <Review useSwiper={true} review={review}></Review>}
         <CommentsArticle></CommentsArticle>
       </StyledSimpleBarReact>
