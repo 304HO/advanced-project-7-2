@@ -3,6 +3,7 @@ import { faHeart, faCircle, faX, faQuestion, IconDefinition } from "@fortawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 import { ImageType } from "../../hooks/useFetchMainReview";
+import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 
 type PropsType = {
   image: string;
@@ -16,15 +17,49 @@ const ImageComponent = ({ image, images }: PropsType) => {
 
   return (
     <>
-      <StyledImage src={image} onClick={onClickHandler} />
+      <StyledArticle>
+        <StyledImage src={image} onClick={onClickHandler} />
+        <StyledDiv className="IconFaEllipsis">
+          <FontAwesomeIcon icon={faEllipsis}></FontAwesomeIcon>
+        </StyledDiv>
+      </StyledArticle>
     </>
   );
 };
+
+export default ImageComponent;
+
+const StyledArticle = styled.div`
+  position: relative;
+  & > img:hover {
+    filter: blur(1px);
+  }
+`;
 
 const StyledImage = styled.img`
   width: 90px;
   height: 90px;
   border-radius: 15px;
+  /* &:hover {
+    filter: blur(1px);
+  } */
 `;
 
-export default ImageComponent;
+const StyledDiv = styled.div`
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  display: none;
+
+  & > img {
+    width: 25px;
+    height: 25px;
+  }
+
+  /* position: relative; */
+  /* top: 0; */
+  /* left: 0; */
+  /* width: 100%; */
+  /* background-color: black;
+  opacity: 0.2; */
+`;

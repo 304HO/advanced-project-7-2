@@ -14,6 +14,7 @@ const ImageArticle = ({ images }: PropsType) => {
     <StyledSpan>
       {images
         .sort((a, b) => a.priority - b.priority)
+        .slice(0, 3)
         .map(({ id, image }: ImageType) => (
           <ImageComponent key={id} image={image} images={images}></ImageComponent>
         ))}
@@ -22,6 +23,7 @@ const ImageArticle = ({ images }: PropsType) => {
 };
 
 const StyledSpan = styled.span`
+  position: relative;
   display: flex;
   gap: 5px;
   padding: 5px;
