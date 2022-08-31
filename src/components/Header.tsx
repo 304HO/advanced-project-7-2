@@ -36,6 +36,8 @@ function Header() {
 
 const StyledHeader = styled.header`
   position: sticky;
+  z-index: 10;
+
   height: 64px;
   top: 0;
   display: flex;

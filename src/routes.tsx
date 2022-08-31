@@ -4,6 +4,7 @@ import ReviewMain from "./pages/ReviewMain";
 import Test from "./pages/Test";
 import ReviewDetail from "./pages/ReviewDetail";
 import Search from "./pages/Search";
+import MainMypage from "./pages/MainMypage"
 
 export type RouteType = {
   name: string;
@@ -48,6 +49,12 @@ const routes: Array<RouteType> = [
     key: "ReviewDetail",
     route: "/ReviewDetail/:id",
     component: <ReviewDetail />
+  },
+  {
+    name: "MainMypage",
+    key: "MainMypage",
+    route: "/MainMypage",
+    component: <MainMypage />
   }
 ];
 
