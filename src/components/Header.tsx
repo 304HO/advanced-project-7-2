@@ -8,17 +8,37 @@ import { useAppSelector, useAppDispatch } from "./../hooks/storeHooks";
 import { getUserProfile } from "../features/userActions";
 import logo from "./../assets/images/Logo.svg";
 import { logout } from "../features/userSlice";
+import SearchBar from "./SearchBar";
 
 type HeaderPropsType = {
   useBackSpace?: boolean;
   useLogo?: boolean;
   useLogout?: boolean;
   useSearch?: boolean;
+  useSearchBar?: boolean;
   useMypage?: boolean;
   children?: React.ReactElement | string;
+  currentText?: string | null;
+  setCurrentText?: any | null;
+  updateSearchText?: any | null;
+  addSearchHistory?: any | null;
+  backSpacePath?: string | null;
 };
 
-function Header({ children, useBackSpace = false, useLogo = false, useLogout = false, useSearch = false, useMypage = false }: HeaderPropsType) {
+function Header({
+  children,
+  useBackSpace = false,
+  useLogo = false,
+  useLogout = false,
+  useSearch = false,
+  useMypage = false,
+  useSearchBar = false,
+  backSpacePath = null,
+  currentText,
+  setCurrentText,
+  updateSearchText,
+  addSearchHistory
+}: HeaderPropsType) {
   const userState = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -43,7 +63,11 @@ function Header({ children, useBackSpace = false, useLogo = false, useLogout = f
   };
 
   const onClickBackSpaceHandler = () => {
-    navigate(-1);
+    if (backSpacePath === null) {
+      navigate(-1);
+    } else {
+      navigate(backSpacePath);
+    }
   };
   const onClickMypageHandler = () => {
     navigate("/MainMypage");
@@ -58,6 +82,14 @@ function Header({ children, useBackSpace = false, useLogo = false, useLogout = f
         {useLogout === true && <StyledFontAwesomeIcon onClick={onClickLogoutHandler} icon={faRightFromBracket} />}
         {useSearch === true && <StyledFontAwesomeIcon onClick={onClickSearchHandler} icon={faMagnifyingGlass} />}
         {useMypage === true && <StyledFontAwesomeIcon onClick={onClickMypageHandler} icon={faBell} />}
+        {useSearchBar === true && (
+          <SearchBar
+            currentText={currentText}
+            setCurrentText={setCurrentText}
+            updateSearchText={updateSearchText}
+            addSearchHistory={addSearchHistory}
+          />
+        )}
       </StyledDiv>
     </StyledHeader>
   );
